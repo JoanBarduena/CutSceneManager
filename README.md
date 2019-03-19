@@ -6,5 +6,4 @@
 
 ## Author:
 
-- Joan Barduena Reyes
-	-[Joan's GitHub Link](https://github.com/JoanBarduena)
+- Joan Barduena Reyes [GitHub](https://github.com/JoanBarduena)
