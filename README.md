@@ -19,7 +19,7 @@ Command and Conquer saga is known for having live-action cutscenes with famous a
 The cutscenes on C&C are very profesional and they are a reference. 
 
 <p align="center">
-  <img src="https://github.com/JoanBarduena/CutSceneManager/blob/master/docs/redalert3.jpg">
+  <img src="https://raw.githubusercontent.com/JoanBarduena/CutSceneManager/master/docs/redalert3.jpg">
 </p>
 
 ###### Command and Conquer: Red Alert 3 
@@ -27,7 +27,7 @@ The cutscenes on C&C are very profesional and they are a reference.
 Dragon's Lair is known for being a interactive live-action cutscene transformed into a video game. The player interacts with the cutscene to play the game. 
 
 <p align="center">
-  <img src="https://github.com/JoanBarduena/CutSceneManager/blob/master/docs/dragons%20lair.jpg">
+  <img src="https://raw.githubusercontent.com/JoanBarduena/CutSceneManager/master/docs/dragons%20lair.jpg">
 </p>
 
 ###### Dragon's Lair
@@ -41,7 +41,7 @@ Pre-rendered scenes or rendered in-game.
 Real-time cutscenes are the ones being rendered for the game engine while playing. Video games like Assassin’s Creed have really good real-time cutscenes, which let the player see what is happening at that moment in the game while watching the scene.  
 
 <p align="center">
-  <img src="https://github.com/JoanBarduena/CutSceneManager/blob/master/docs/assassinscreed.jpg">
+  <img src="https://raw.githubusercontent.com/JoanBarduena/CutSceneManager/master/docs/assassinscreed.jpg">
 </p>
 
 ###### Assassin's Creed: Origins
@@ -51,7 +51,7 @@ Quick Time Events (QTE) is an example of real-time cutscenes. These ones let the
 God of War is a good example on how to use QTE. When Kratos is fighting against giant creatures, to give the sensation of enormity and do not lose the power of being fighting, the player only needs to press certain buttons that appear on the screen to kill the creature.
 
 <p align="center">
-  <img src="https://github.com/JoanBarduena/CutSceneManager/blob/master/docs/kratos.png" width="1500">
+  <img src="https://raw.githubusercontent.com/JoanBarduena/CutSceneManager/master/docs/kratos.png" width="1500">
 </p>
 
 ###### God of War: Chains of Olympus
@@ -62,7 +62,7 @@ These scenes are usually made in a different studio than the one that makes the 
 One clear example of pre-rendered cutscenes is Halo 5. The first thing the player sees while starting the campaign is this [cutscene](https://www.youtube.com/watch?v=J7DKY-ykK0M). Then there is a transition from the cutscene to the gameplay and it is easy to see that there is quality difference between both. 
 
 <p align="center">
-  <img src="https://github.com/JoanBarduena/CutSceneManager/blob/master/docs/halo5.jpg" width="1500">
+  <img src="https://raw.githubusercontent.com/JoanBarduena/CutSceneManager/master/docs/halo5.jpg" width="1500">
 </p>
 
 ###### Halo 5: Guardians
