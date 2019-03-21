@@ -1,17 +1,17 @@
-#ifndef __j1Player_H__
-#define __j1Player_H__
+#ifndef __j1Cutscene_H__
+#define __j1Cutscene_H__
 
 #include "j1Module.h"
 #include "p2Point.h"
 
 struct SDL_Texture;
 
-class j1Player :public j1Module
+class j1Cutscene :public j1Module
 {
 public:
 
-	j1Player();
-	~j1Player();
+	j1Cutscene();
+	~j1Cutscene();
 
 	// Called before render is available
 	bool Awake();
@@ -21,8 +21,6 @@ public:
 
 	// Called before all Updates
 	bool PreUpdate();
-
-	bool UpdateTick(float dt);
 
 	// Called each loop iteration
 	bool Update(float dt);
@@ -36,14 +34,8 @@ public:
 
 public:
 
-	iPoint position = {0,0};
-	iPoint position2 = {0,0};
-
-	//uint speed, health, armor, strength = 0;
-
-	SDL_Texture * graphics = nullptr;
-	SDL_Texture * graphics2 = nullptr; 
+	void LoadData(std::string scene, )
 
 };
 
-#endif // __j1Player_H__
+#endif // __j1Cutscene_H__

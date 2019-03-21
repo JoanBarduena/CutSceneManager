@@ -13,6 +13,7 @@
 #include "j1Map.h"
 #include "j1App.h"
 #include "j1Player.h"
+#include "j1CutsceneManager.h"
 #include "j1Fonts.h"
 #include "j1Gui.h"
 
@@ -29,6 +30,7 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	scene = new j1Scene();
 	map = new j1Map();
 	player = new j1Player();
+	cutscene = new j1Cutscene(); 
 	font = new j1Fonts();
 	gui = new j1Gui();
 
@@ -41,6 +43,7 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(map);
 	AddModule(font);
 	AddModule(player);
+	AddModule(cutscene); 
 	AddModule(gui);
 	AddModule(scene);
 
@@ -211,10 +214,14 @@ void j1App::FinishUpdate()
 	uint32 last_frame_ms = frame_time.Read();
 	uint32 frames_on_last_update = prev_last_sec_frame_count;
 
+	//static char title[256];
+	//sprintf_s(title, 256, "Av.FPS: %.2f Last Frame Ms: %u Last sec frames: %i Last dt: %.3f Time since startup: %.3f Frame Count: %lu ",
+	//	avg_fps, last_frame_ms, frames_on_last_update, dt, seconds_since_startup, frame_count);
+	//App->win->SetTitle(title);
+
 	static char title[256];
-	sprintf_s(title, 256, "Av.FPS: %.2f Last Frame Ms: %u Last sec frames: %i Last dt: %.3f Time since startup: %.3f Frame Count: %lu ",
-		avg_fps, last_frame_ms, frames_on_last_update, dt, seconds_since_startup, frame_count);
-	App->win->SetTitle(title);
+	sprintf_s(title, 256, "CUTSCENE MANAGER by Joan Barduena Reyes"); 
+	App->win->SetTitle(title); 
 
 	if (capped_ms > 0 && last_frame_ms < capped_ms)
 	{

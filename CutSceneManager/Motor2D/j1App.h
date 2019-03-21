@@ -18,6 +18,7 @@ class j1Map;
 class j1Player;
 class j1Fonts;
 class j1Gui;
+class j1Cutscene; 
 
 class j1App
 {
@@ -89,6 +90,7 @@ public:
 	j1Scene*			scene = NULL;
 	j1Map*				map = NULL;
 	j1Player*           player = NULL;
+	j1Cutscene*			cutscene = NULL; 
 	j1Fonts*			font = NULL;
 	j1Gui*				gui = NULL;
 
