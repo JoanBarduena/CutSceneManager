@@ -35,9 +35,21 @@ public:
 
 public:
 
-	void LoadData(pugi::xml_node& data, uint id); 
+	void LoadData(pugi::xml_node& data, uint id); //Function that loads data from the XML. 
+	void Destination(int x, int y); //Destination of the actor
+
 
 	pugi::xml_document cutscenes_xml;
+
+	bool cutting_scene = false; 
+
+	//Variables to on the XML. 
+	int		actor1_x;
+	int		actor1_y; 
+	int		actor1_speed;
+
+	iPoint	destination;
+
 
 };
 

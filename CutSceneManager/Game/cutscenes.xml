@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <cutscene_manager>
   <cutscene id="1">
-    <actor_1 position_x="110"/>
+    <actor_1 position_x="-20" position_y="0" speed="2"/>
   </cutscene>
 </cutscene_manager>

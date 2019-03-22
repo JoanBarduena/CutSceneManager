@@ -42,7 +42,9 @@ bool j1Cutscene::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 	{
 		LoadData(xml, 1);
+		Destination(actor1_x, actor1_y); 
 	}
+
 
 	return true;
 }
@@ -59,13 +61,25 @@ bool j1Cutscene::CleanUp()
 
 void j1Cutscene::LoadData(pugi::xml_node& data, uint id)
 {
+	App->
+
 	pugi::xml_node cutscene_id; 
 
 	for (cutscene_id = data.child("cutscene"); cutscene_id; cutscene_id = cutscene_id.next_sibling("cutscene"))
 	{
 		if (cutscene_id.attribute("id").as_uint() == id)
 		{
-			App->player->position.x = cutscene_id.child("actor_1").attribute("position_x").as_int(); 
+			actor1_x = cutscene_id.child("actor_1").attribute("position_x").as_int(); 
+			actor1_y = cutscene_id.child("actor_1").attribute("position_y").as_int(); 
+			actor1_speed = cutscene_id.child("actor_1").attribute("speed").as_int();
 		}
 	}
+
+	cutting_scene = true;
+}
+
+void j1Cutscene::Destination(int x, int y)
+{
+	App->player->position.x = x; 
+	App->player->position.y = y; 
 }
