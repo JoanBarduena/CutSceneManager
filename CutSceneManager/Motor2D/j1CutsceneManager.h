@@ -3,8 +3,15 @@
 
 #include "j1Module.h"
 #include "p2Point.h"
+using namespace std; 
 
 struct SDL_Texture;
+
+class Cutscene
+{
+public:
+	uint id; 
+};
 
 class j1Cutscene :public j1Module
 {
@@ -34,7 +41,9 @@ public:
 
 public:
 
-	void LoadData(std::string scene, )
+	void LoadData(pugi::xml_node& data, uint id); 
+
+	list<Cutscene*> cutscene_list; 
 
 };
 

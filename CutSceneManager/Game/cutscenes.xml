@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<cutscene>
-  
-</cutscene>
+<cutscene_manager>
+  <cutscene id="1">
+    
+  </cutscene>
+</cutscene_manager>

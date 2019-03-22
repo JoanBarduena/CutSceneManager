@@ -4,6 +4,7 @@
 #include "j1Render.h"
 #include "j1Input.h"
 #include "p2Log.h"
+using namespace std; 
 
 j1Cutscene::j1Cutscene() : j1Module()
 {
@@ -43,4 +44,12 @@ bool j1Cutscene::PostUpdate()
 bool j1Cutscene::CleanUp()
 {
 	return true;
+}
+
+void j1Cutscene::LoadData(pugi::xml_node& data, uint id)
+{
+	for (list<Cutscene*>::iterator cutscene_ip = cutscene_list.begin(); cutscene_ip != cutscene_list.end(); ++cutscene_ip)
+	{
+
+	}
 }
