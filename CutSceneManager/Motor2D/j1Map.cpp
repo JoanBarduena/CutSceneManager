@@ -282,7 +282,7 @@ bool j1Map::Load(const char* file_name)
 bool j1Map::LoadMap()
 {
 	bool ret = true;
-	pugi::xml_node map = map_file.child("map");
+	pugi::xml_node map = map_file.child("map"); 
 
 	if(map == NULL)
 	{

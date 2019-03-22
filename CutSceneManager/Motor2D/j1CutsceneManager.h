@@ -7,12 +7,6 @@ using namespace std;
 
 struct SDL_Texture;
 
-class Cutscene
-{
-public:
-	uint id; 
-};
-
 class j1Cutscene :public j1Module
 {
 public:
@@ -43,7 +37,7 @@ public:
 
 	void LoadData(pugi::xml_node& data, uint id); 
 
-	list<Cutscene*> cutscene_list; 
+	pugi::xml_document cutscenes_xml;
 
 };
 
