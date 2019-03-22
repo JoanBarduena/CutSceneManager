@@ -51,14 +51,14 @@ bool j1Cutscene::Update(float dt)
 		doing_cut = true; 
 	}
 
+	if (doing_cut)
+		Destination(actor1_x, actor1_y, actor1_speed);
+
 	return true;
 }
 
 bool j1Cutscene::PostUpdate()
 {
-	if (doing_cut)
-		Destination(actor1_x, actor1_y, actor1_speed);
-
 	CheckDestination(actor1_x, actor1_y); 
 
 	return true;
@@ -91,6 +91,9 @@ void j1Cutscene::LoadData(pugi::xml_node& data, uint id)
 
 void j1Cutscene::Destination(int x, int y, uint speed)
 {
+	LOG("%d", x); 
+	LOG("%d", App->player->position.x); 
+
 	if (x > App->player->position.x)
 		App->player->position.x += speed;
 	else if (x < App->player->position.x)
@@ -108,6 +111,6 @@ void j1Cutscene::Destination(int x, int y, uint speed)
 
 void j1Cutscene::CheckDestination(int x, int y)
 {
-	if (x == dest_x && y == dest_y)
+	if (x == App->player->position.x && y == App->player->position.y)
 		doing_cut = false;
 }
