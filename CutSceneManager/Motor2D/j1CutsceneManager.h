@@ -3,9 +3,18 @@
 
 #include "j1Module.h"
 #include "p2Point.h"
+#include <list>
 using namespace std; 
 
-struct SDL_Texture;
+struct Action 
+{
+public:
+
+	int		actor_x = 0;
+	int		actor_y = 0;
+	int		actor_speed = 0;
+
+};
 
 class j1Cutscene :public j1Module
 {
@@ -38,16 +47,14 @@ public:
 	void LoadData(pugi::xml_node& data, uint id); //Function that loads data from the XML. 
 	void Destination(int x, int y, uint speed); //Destination of the actor. 
 	void CheckDestination(int x, int y); //Checking if the actor has reached the destination. 
+	void DoAction(); // Adds action to the list
+
+	list <Action*> actions; 
+	Action iterator;
 
 	pugi::xml_document cutscenes_xml;
 
 	bool cutting_scene = false; 
-
-	//Variables to on the XML. 
-	int		actor1_x;
-	int		actor1_y; 
-	int		actor1_speed;
-	int		dest_x, dest_y; 
 
 	iPoint	destination;
 

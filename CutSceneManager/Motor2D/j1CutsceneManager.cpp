@@ -42,24 +42,23 @@ bool j1Cutscene::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 	{
 		LoadData(xml, 1);
-		doing_cut = true;  
+		DoAction();
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
 	{
 		LoadData(xml, 2); 
-		doing_cut = true; 
+		DoAction();
 	}
 
-	if (doing_cut)
-		Destination(actor1_x, actor1_y, actor1_speed);
+	
 
 	return true;
 }
 
 bool j1Cutscene::PostUpdate()
 {
-	CheckDestination(actor1_x, actor1_y); 
+	/*CheckDestination(actor_x, actor1_y); */
 
 	return true;
 }
@@ -72,17 +71,20 @@ bool j1Cutscene::CleanUp()
 void j1Cutscene::LoadData(pugi::xml_node& data, uint id)
 {
 	pugi::xml_node cutscene_id; 
+	pugi::xml_node xml_actions;
 
 	for (cutscene_id = data.child("cutscene"); cutscene_id; cutscene_id = cutscene_id.next_sibling("cutscene"))
 	{
 		if (cutscene_id.attribute("id").as_uint() == id)
 		{
-			actor1_x = cutscene_id.child("actor_1").attribute("position_x").as_int(); 
-			actor1_y = cutscene_id.child("actor_1").attribute("position_y").as_int(); 
-			actor1_speed = cutscene_id.child("actor_1").attribute("speed").as_int();
+			for (xml_actions = cutscene_id.child("action"); xml_actions; xml_actions = xml_actions.next_sibling("action"))
+			{
+					iterator.actor_x = xml_actions.attribute("position_x").as_int();
+					iterator.actor_y = xml_actions.attribute("position_y").as_int();
+					iterator.actor_speed = xml_actions.attribute("speed").as_int();
 
-			dest_x = actor1_x; //Saving position X of the destination. 
-			dest_y = actor1_y; //Saving position Y of the destination. 
+					actions.push_back(&iterator);
+			}
 		}
 	}
 
@@ -114,3 +116,13 @@ void j1Cutscene::CheckDestination(int x, int y)
 	if (x == App->player->position.x && y == App->player->position.y)
 		doing_cut = false;
 }
+
+void j1Cutscene::DoAction()
+{
+	for (list<Action*>::iterator iterator = actions.begin(); iterator != actions.end(); iterator++)
+	{
+		App->player->position.x = (*iterator)->actor_x;
+		App->player->position.y = (*iterator)->actor_y;
+	}
+}
+
