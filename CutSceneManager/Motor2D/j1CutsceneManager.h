@@ -10,9 +10,9 @@ struct Action
 {
 public:
 
-	int		actor_x = 0;
-	int		actor_y = 0;
-	int		actor_speed = 0;
+	int		x = 0;
+	int		y = 0;
+	int		speed = 0;
 
 };
 
@@ -46,19 +46,18 @@ public:
 
 	void LoadData(pugi::xml_node& data, uint id); //Function that loads data from the XML. 
 	void Destination(int x, int y, uint speed); //Destination of the actor. 
-	void CheckDestination(int x, int y); //Checking if the actor has reached the destination. 
+	void CheckDestination(int x, int y, uint speed); //Checking if the actor has reached the destination. 
 	void DoAction(); // Adds action to the list
 
 	list <Action*> actions; 
+
 	Action iterator;
+	Action destination;
 
 	pugi::xml_document cutscenes_xml;
 
 	bool cutting_scene = false; 
-
-	iPoint	destination;
-
-	bool doing_cut = false; 
+	bool next_action = true; 
 };
 
 #endif // __j1Cutscene_H__

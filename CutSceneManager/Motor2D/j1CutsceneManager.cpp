@@ -42,24 +42,29 @@ bool j1Cutscene::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
 	{
 		LoadData(xml, 1);
-		DoAction();
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
 	{
-		LoadData(xml, 2); 
+		LoadData(xml, 2); 		
+	}
+
+	if (cutting_scene)
+	{
 		DoAction();
 	}
 
-	
+	if (next_action == false)
+	{
+		Destination(destination.x, destination.y, destination.speed); 
+		CheckDestination(destination.x, destination.y, destination.speed); 
+	}
 
 	return true;
 }
 
 bool j1Cutscene::PostUpdate()
 {
-	/*CheckDestination(actor_x, actor1_y); */
-
 	return true;
 }
 
@@ -79,16 +84,15 @@ void j1Cutscene::LoadData(pugi::xml_node& data, uint id)
 		{
 			for (xml_actions = cutscene_id.child("action"); xml_actions; xml_actions = xml_actions.next_sibling("action"))
 			{
-					iterator.actor_x = xml_actions.attribute("position_x").as_int();
-					iterator.actor_y = xml_actions.attribute("position_y").as_int();
-					iterator.actor_speed = xml_actions.attribute("speed").as_int();
+					iterator.x = xml_actions.attribute("position_x").as_int();
+					iterator.y = xml_actions.attribute("position_y").as_int();
+					iterator.speed = xml_actions.attribute("speed").as_int();
 
 					actions.push_back(&iterator);
 			}
 		}
 	}
-
-	cutting_scene = true;
+	cutting_scene = true; 
 }
 
 void j1Cutscene::Destination(int x, int y, uint speed)
@@ -111,18 +115,27 @@ void j1Cutscene::Destination(int x, int y, uint speed)
 		App->player->position.y == y; 
 }
 
-void j1Cutscene::CheckDestination(int x, int y)
+void j1Cutscene::CheckDestination(int x, int y, uint speed)
 {
-	if (x == App->player->position.x && y == App->player->position.y)
-		doing_cut = false;
+	if (x + speed >= App->player->position.x && x - speed <= App->player->position.x
+		&& speed + y >= App->player->position.y && y - speed <= App->player->position.y)
+		next_action = true;
 }
 
 void j1Cutscene::DoAction()
 {
-	for (list<Action*>::iterator iterator = actions.begin(); iterator != actions.end(); iterator++)
+	for (list<Action*>::iterator iterator = actions.begin(); iterator != actions.end(); iterator++) // List of actions.
 	{
-		App->player->position.x = (*iterator)->actor_x;
-		App->player->position.y = (*iterator)->actor_y;
+		if (next_action) // Do not start an action before the previous had finished.
+		{
+			destination.x = (*iterator)->x;
+			destination.y = (*iterator)->y;
+			destination.speed = (*iterator)->speed;
+
+			next_action = false;
+
+			actions.pop_front(); 
+		}	
 	}
 }
 
