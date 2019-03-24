@@ -6,7 +6,7 @@
 #include <list>
 using namespace std; 
 
-struct Action 
+class Action 
 {
 public:
 
@@ -49,7 +49,7 @@ public:
 	void CheckDestination(int x, int y, uint speed); //Checking if the actor has reached the destination. 
 	void DoAction(); // Adds action to the list
 
-	list <Action*> actions; 
+	list <Action> actions; 
 
 	Action iterator;
 	Action destination;

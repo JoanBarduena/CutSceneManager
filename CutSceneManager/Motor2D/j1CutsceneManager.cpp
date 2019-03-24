@@ -5,6 +5,7 @@
 #include "j1Input.h"
 #include "p2Log.h"
 #include "j1Player.h"
+#include <iostream>
 using namespace std; 
 
 j1Cutscene::j1Cutscene() : j1Module()
@@ -88,7 +89,9 @@ void j1Cutscene::LoadData(pugi::xml_node& data, uint id)
 					iterator.y = xml_actions.attribute("position_y").as_int();
 					iterator.speed = xml_actions.attribute("speed").as_int();
 
-					actions.push_back(&iterator);
+					actions.push_back(iterator);
+
+					LOG("iterator = %d", iterator.x); 
 			}
 		}
 	}
@@ -97,9 +100,6 @@ void j1Cutscene::LoadData(pugi::xml_node& data, uint id)
 
 void j1Cutscene::Destination(int x, int y, uint speed)
 {
-	LOG("%d", x); 
-	LOG("%d", App->player->position.x); 
-
 	if (x > App->player->position.x)
 		App->player->position.x += speed;
 	else if (x < App->player->position.x)
@@ -124,17 +124,20 @@ void j1Cutscene::CheckDestination(int x, int y, uint speed)
 
 void j1Cutscene::DoAction()
 {
-	for (list<Action*>::iterator iterator = actions.begin(); iterator != actions.end(); iterator++) // List of actions.
+	if(!actions.empty())// List of actions.
 	{
 		if (next_action) // Do not start an action before the previous had finished.
 		{
-			destination.x = (*iterator)->x;
-			destination.y = (*iterator)->y;
-			destination.speed = (*iterator)->speed;
-
 			next_action = false;
 
+			destination.x = actions.front().x;
+			destination.y = actions.front().y;
+			destination.speed = actions.front().speed;
+		
+			LOG("destination = %d", destination.x);
 			actions.pop_front(); 
+			
+			LOG("%d", actions.size());
 		}	
 	}
 }
