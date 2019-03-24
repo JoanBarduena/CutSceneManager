@@ -220,7 +220,7 @@ void j1App::FinishUpdate()
 	//App->win->SetTitle(title);
 
 	static char title[256];
-	sprintf_s(title, 256, "CUTSCENE MANAGER by Joan Barduena Reyes"); 
+	sprintf_s(title, 256, "CUTSCENE MANAGER by Joan Barduena Reyes || Remaining Actions: %d | Time: %d", App->cutscene->actions.size(), App->cutscene->act_time.Read()/1000); 
 	App->win->SetTitle(title); 
 
 	if (capped_ms > 0 && last_frame_ms < capped_ms)

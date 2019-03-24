@@ -24,7 +24,7 @@ bool j1Cutscene::Awake()
 
 bool j1Cutscene::Start()
 {
-
+	act_time.Start(); 
 	return true;
 }
 
@@ -33,7 +33,6 @@ bool j1Cutscene::PreUpdate()
 	return true;
 }
 
-
 bool j1Cutscene::Update(float dt)
 {
 	pugi::xml_parse_result res = cutscenes_xml.load_file("cutscenes.xml");;
@@ -41,25 +40,22 @@ bool j1Cutscene::Update(float dt)
 	pugi::xml_node xml = cutscenes_xml.document_element(); 
 
 	if (App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
-	{
 		LoadData(xml, 1);
-	}
 
 	if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
-	{
 		LoadData(xml, 2); 		
-	}
 
 	if (cutting_scene)
-	{
 		DoAction();
-	}
-
-	if (next_action == false)
+		
+	if (!next_action)
 	{
 		Destination(destination.x, destination.y, destination.speed); 
 		CheckDestination(destination.x, destination.y, destination.speed); 
 	}
+
+	if(!timer)
+		CheckTime(destination.time);
 
 	return true;
 }
@@ -88,17 +84,16 @@ void j1Cutscene::LoadData(pugi::xml_node& data, uint id)
 					iterator.x = xml_actions.attribute("position_x").as_int();
 					iterator.y = xml_actions.attribute("position_y").as_int();
 					iterator.speed = xml_actions.attribute("speed").as_int();
+					iterator.time = xml_actions.attribute("time").as_int();
 
 					actions.push_back(iterator);
-
-					LOG("iterator = %d", iterator.x); 
 			}
 		}
 	}
 	cutting_scene = true; 
 }
 
-void j1Cutscene::Destination(int x, int y, uint speed)
+void j1Cutscene::Destination(int x, int y, uint speed) 
 {
 	if (x > App->player->position.x)
 		App->player->position.x += speed;
@@ -122,22 +117,29 @@ void j1Cutscene::CheckDestination(int x, int y, uint speed)
 		next_action = true;
 }
 
+void j1Cutscene::CheckTime(int time)
+{
+	if (time == (act_time.Read()/1000)) //Read in seconds.
+		timer = true;	
+}
+
 void j1Cutscene::DoAction()
 {
-	if(!actions.empty())// List of actions.
+	if(!actions.empty()) // List of actions. 
 	{
-		if (next_action) // Do not start an action before the previous had finished.
+		if (next_action && timer) // Do not start an action before the previous had finished.
 		{
+			Start(); //In order to start the timer again
+
 			next_action = false;
+			timer = false;
 
 			destination.x = actions.front().x;
 			destination.y = actions.front().y;
 			destination.speed = actions.front().speed;
-		
-			LOG("destination = %d", destination.x);
-			actions.pop_front(); 
-			
-			LOG("%d", actions.size());
+			destination.time = actions.front().time; 
+
+			actions.pop_front(); 	
 		}	
 	}
 }
