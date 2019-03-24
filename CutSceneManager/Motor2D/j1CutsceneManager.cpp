@@ -46,7 +46,10 @@ bool j1Cutscene::Update(float dt)
 		LoadData(xml, 2); 		
 
 	if (cutting_scene)
-		DoAction();
+	{
+		DoAction(actions_1);
+		DoAction(actions_2);
+	}
 		
 	if (!next_action)
 	{
@@ -81,12 +84,16 @@ void j1Cutscene::LoadData(pugi::xml_node& data, uint id)
 		{
 			for (xml_actions = cutscene_id.child("action"); xml_actions; xml_actions = xml_actions.next_sibling("action"))
 			{
-					iterator.x = xml_actions.attribute("position_x").as_int();
-					iterator.y = xml_actions.attribute("position_y").as_int();
+					iterator.x = xml_actions.attribute("pos_x").as_int();
+					iterator.y = xml_actions.attribute("pos_y").as_int();
 					iterator.speed = xml_actions.attribute("speed").as_int();
 					iterator.time = xml_actions.attribute("time").as_int();
+					iterator.actor = xml_actions.attribute("actor").as_int(); 
 
-					actions.push_back(iterator);
+					if(iterator.actor == 1)
+						actions_1.push_back(iterator);
+					if(iterator.actor == 2)
+						actions_2.push_back(iterator);
 			}
 		}
 	}
@@ -99,15 +106,17 @@ void j1Cutscene::Destination(int x, int y, uint speed)
 		App->player->position.x += speed;
 	else if (x < App->player->position.x)
 		App->player->position.x -= speed;
-	else
+	
+	if(App->player->position.x + speed > x > App->player->position.x)
 		App->player->position.x == x; 
 
 	if (y > App->player->position.y)
 		App->player->position.y += speed;
 	else if (y < App->player->position.y)
 		App->player->position.y -= speed;
-	else
-		App->player->position.y == y; 
+
+	if (App->player->position.y + speed > y > App->player->position.y)
+		App->player->position.y == y;
 }
 
 void j1Cutscene::CheckDestination(int x, int y, uint speed)
@@ -123,13 +132,13 @@ void j1Cutscene::CheckTime(int time)
 		timer = true;	
 }
 
-void j1Cutscene::DoAction()
+void j1Cutscene::DoAction(list <Action> actions)
 {
 	if(!actions.empty()) // List of actions. 
 	{
 		if (next_action && timer) // Do not start an action before the previous had finished.
 		{
-			Start(); //In order to start the timer again
+			//Start(); //In order to start the timer again
 
 			next_action = false;
 			timer = false;
@@ -137,7 +146,7 @@ void j1Cutscene::DoAction()
 			destination.x = actions.front().x;
 			destination.y = actions.front().y;
 			destination.speed = actions.front().speed;
-			destination.time = actions.front().time; 
+			destination.time = actions.front().time;
 
 			actions.pop_front(); 	
 		}	

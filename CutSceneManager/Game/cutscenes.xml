@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <cutscene_manager>
   <cutscene id="1">
-    <action position_x="-100" position_y="900" speed="5" time="10"/> 
-    <action position_x="-450" position_y="500" speed="3" time="3"/>
+    <action actor="1" pos_x="-100" pos_y="900" speed="5" time="5"/>
+    <action actor="1" pos_x="545" pos_y="21" speed="3" time="6"/>
+    <action actor="2" pos_x="-450" pos_y="500" speed="3" time="3"/>
   </cutscene>
   <cutscene id="2">
-    <action position_x="489" position_y="123" speed="10"/>
+    <action actor="2" pos_x="489" pos_y="123" speed="4" time="4"/>
   </cutscene>
 </cutscene_manager>

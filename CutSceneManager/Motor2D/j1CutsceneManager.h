@@ -14,6 +14,7 @@ public:
 	int		y = 0;
 	int		speed = 0;
 	int		time = 0; 
+	int		actor = 0; 
 };
 
 class j1Cutscene :public j1Module
@@ -48,9 +49,10 @@ public:
 	void Destination(int x, int y, uint speed); //Destination of the actor. 
 	void CheckDestination(int x, int y, uint speed); //Check if the actor has reached the destination. 
 	void CheckTime(int time); //Check if the given time has arrived.
-	void DoAction(); // Adds action to the list
+	void DoAction(list <Action> actions); // Adds action to the list
 
-	list <Action> actions; 
+	list <Action> actions_1; 
+	list <Action> actions_2; 
 
 	Action iterator;
 	Action destination;
