@@ -24,7 +24,7 @@ bool j1Cutscene::Awake()
 
 bool j1Cutscene::Start()
 {
-	//act_time.Start(); 
+	act_time.Start(); 
 	return true;
 }
 
@@ -46,18 +46,21 @@ bool j1Cutscene::Update(float dt)
 		LoadData(xml, 2); 		
 
 	if (all_loaded) //Cutscene pressed attributes loaded.
-	{
 		DoAction(actions[actions_1_iterator]);
-	}
+	
 		
-	if (!next_action)
+	if (!reached_dest)
 	{
 		Destination(actor_1.x, actor_1.y, actor_1.speed);
 		CheckDestination(actor_1.x, actor_1.y, actor_1.speed);
 	}
 
-	/*if(!timer)
-		CheckTime(actor_1.time)*/;
+	if(!time_elapsed)
+		CheckTime(actor_1.time);
+
+	if (reached_dest && time_elapsed)
+		action_done = true;
+		
 
 	return true;
 }
@@ -119,18 +122,18 @@ void j1Cutscene::CheckDestination(int x, int y, uint speed)
 {
 	if (x + speed >= App->player->position.x && x - speed <= App->player->position.x
 		&& speed + y >= App->player->position.y && y - speed <= App->player->position.y)
-		next_action = true;
+		reached_dest = true;
 }
 
 void j1Cutscene::CheckTime(int time)
 {
-	//if (time == (act_time.Read()/1000)) //Read in seconds.
-	//	timer = true;	
+	if (time == (act_time.Read()/1000)) //Read in seconds.
+		time_elapsed = true;	
 }
 
 void j1Cutscene::DoAction(Action actions)
 { 
-	if (next_action)
+	if (action_done)
 	{
 		Start(); //In order to start the timer again (time == 0)
 
@@ -142,8 +145,9 @@ void j1Cutscene::DoAction(Action actions)
 		LOG("%d", actions_1_iterator); 
 		actions_1_iterator++; 
 
-		next_action = false;
-		timer = false;
+		reached_dest = false;
+		time_elapsed = false;
+		action_done = false;
 	}
 }
 

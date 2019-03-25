@@ -16,7 +16,7 @@ public:
 	int		x = 0;			//Position X the actor needs to reach.
 	int		y = 0;			//Position Y the actor needs to reach. 
 	int		speed = 0;		//Actor speed. 
-	int		time = 0;		//Time the action takes.
+	int		time = 0;	//Time the action takes.
 };
 
 class j1Cutscene :public j1Module
@@ -63,11 +63,12 @@ public:
 	pugi::xml_document cutscenes_xml;
 
 	bool all_loaded = false; 
-	bool next_action = true; 
+	bool reached_dest = true; 
+	bool action_done = true;
 	
 	//Timer
 	j1Timer	act_time; 
-	bool timer = true;
+	bool time_elapsed = true;
 };
 
 #endif // __j1Cutscene_H__
