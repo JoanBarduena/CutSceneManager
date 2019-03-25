@@ -7,14 +7,16 @@
 #include <list>
 using namespace std; 
 
-struct Action 
+#define MAX_ACTIONS 15
+
+class Action 
 {
 public:
-	int		x = 0;
-	int		y = 0;
-	int		speed = 0;
-	int		time = 0; 
-	int		actor = 0; 
+	int		id = 0;			//Action id enum.
+	int		x = 0;			//Position X the actor needs to reach.
+	int		y = 0;			//Position Y the actor needs to reach. 
+	int		speed = 0;		//Actor speed. 
+	int		time = 0;		//Time the action takes.
 };
 
 class j1Cutscene :public j1Module
@@ -49,20 +51,21 @@ public:
 	void Destination(int x, int y, uint speed); //Destination of the actor. 
 	void CheckDestination(int x, int y, uint speed); //Check if the actor has reached the destination. 
 	void CheckTime(int time); //Check if the given time has arrived.
-	void DoAction(list <Action> actions); // Adds action to the list
+	void DoAction(Action actions); // Adds action to the list
 
-	list <Action> actions_1; 
-	list <Action> actions_2; 
+	Action actions[MAX_ACTIONS]; 
+	int actions_1_iterator = 0;
 
 	Action iterator;
-	Action destination;
+	Action actor_1;
+	Action actor_2;
 
 	pugi::xml_document cutscenes_xml;
 
-	bool cutting_scene = false; 
+	bool all_loaded = false; 
 	bool next_action = true; 
 	
-	// Timer
+	//Timer
 	j1Timer	act_time; 
 	bool timer = true;
 };

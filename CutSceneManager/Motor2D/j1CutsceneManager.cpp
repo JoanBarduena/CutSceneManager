@@ -24,7 +24,7 @@ bool j1Cutscene::Awake()
 
 bool j1Cutscene::Start()
 {
-	act_time.Start(); 
+	//act_time.Start(); 
 	return true;
 }
 
@@ -45,20 +45,19 @@ bool j1Cutscene::Update(float dt)
 	if (App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
 		LoadData(xml, 2); 		
 
-	if (cutting_scene)
+	if (all_loaded) //Cutscene pressed attributes loaded.
 	{
-		DoAction(actions_1);
-		DoAction(actions_2);
+		DoAction(actions[actions_1_iterator]);
 	}
 		
 	if (!next_action)
 	{
-		Destination(destination.x, destination.y, destination.speed); 
-		CheckDestination(destination.x, destination.y, destination.speed); 
+		Destination(actor_1.x, actor_1.y, actor_1.speed);
+		CheckDestination(actor_1.x, actor_1.y, actor_1.speed);
 	}
 
-	if(!timer)
-		CheckTime(destination.time);
+	/*if(!timer)
+		CheckTime(actor_1.time)*/;
 
 	return true;
 }
@@ -73,7 +72,7 @@ bool j1Cutscene::CleanUp()
 	return true;
 }
 
-void j1Cutscene::LoadData(pugi::xml_node& data, uint id)
+void j1Cutscene::LoadData(pugi::xml_node& data, uint id) // Loads the cutscene selected. 
 {
 	pugi::xml_node cutscene_id; 
 	pugi::xml_node xml_actions;
@@ -88,16 +87,17 @@ void j1Cutscene::LoadData(pugi::xml_node& data, uint id)
 					iterator.y = xml_actions.attribute("pos_y").as_int();
 					iterator.speed = xml_actions.attribute("speed").as_int();
 					iterator.time = xml_actions.attribute("time").as_int();
-					iterator.actor = xml_actions.attribute("actor").as_int(); 
+					iterator.id = xml_actions.attribute("id").as_int(); 
+					//iterator.actor = xml_actions.attribute("actor").as_int(); 
 
-					if(iterator.actor == 1)
-						actions_1.push_back(iterator);
-					if(iterator.actor == 2)
-						actions_2.push_back(iterator);
+					//if(iterator.actor == 1)
+					actions[iterator.id] = iterator;
+					//if(iterator.actor == 2)
+						//actions_2.push_back(iterator);
 			}
 		}
 	}
-	cutting_scene = true; 
+	all_loaded = true; 
 }
 
 void j1Cutscene::Destination(int x, int y, uint speed) 
@@ -107,15 +107,11 @@ void j1Cutscene::Destination(int x, int y, uint speed)
 	else if (x < App->player->position.x)
 		App->player->position.x -= speed;
 	
-	if(App->player->position.x + speed > x > App->player->position.x)
-		App->player->position.x == x; 
-
 	if (y > App->player->position.y)
 		App->player->position.y += speed;
 	else if (y < App->player->position.y)
 		App->player->position.y -= speed;
-
-	if (App->player->position.y + speed > y > App->player->position.y)
+	else
 		App->player->position.y == y;
 }
 
@@ -128,28 +124,26 @@ void j1Cutscene::CheckDestination(int x, int y, uint speed)
 
 void j1Cutscene::CheckTime(int time)
 {
-	if (time == (act_time.Read()/1000)) //Read in seconds.
-		timer = true;	
+	//if (time == (act_time.Read()/1000)) //Read in seconds.
+	//	timer = true;	
 }
 
-void j1Cutscene::DoAction(list <Action> actions)
-{
-	if(!actions.empty()) // List of actions. 
+void j1Cutscene::DoAction(Action actions)
+{ 
+	if (next_action)
 	{
-		if (next_action && timer) // Do not start an action before the previous had finished.
-		{
-			//Start(); //In order to start the timer again
+		Start(); //In order to start the timer again (time == 0)
 
-			next_action = false;
-			timer = false;
+		actor_1.x = actions.x;
+		actor_1.y = actions.y;
+		actor_1.speed = actions.speed;
+		actor_1.time = actions.time;
 
-			destination.x = actions.front().x;
-			destination.y = actions.front().y;
-			destination.speed = actions.front().speed;
-			destination.time = actions.front().time;
+		LOG("%d", actions_1_iterator); 
+		actions_1_iterator++; 
 
-			actions.pop_front(); 	
-		}	
+		next_action = false;
+		timer = false;
 	}
 }
 
