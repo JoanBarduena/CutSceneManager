@@ -67,11 +67,43 @@ One clear example of pre-rendered cutscenes is Halo 5. The first thing the playe
 
 ###### Halo 5: Guardians
 
+## Cutscene Editors
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/JoanBarduena/CutSceneManager/master/docs/ModelingPrograms.png">
+</p>
+
+Programs like 3DS Max, Maya, Blender, zBrush allow us to make the 3D models. Once this models are made, with these tools, cutscenes can be made.
+
+### UNITY: 
+
+“[Cinema Director](https://assetstore.unity.com/packages/tools/visual-scripting/cinema-director-timeline-cutscene-editor-19779) is a modular Timeline Editor and sequencer for Unity. It enables Game Developers, Film Professionals and Machinima gurus to control, sequence and manipulate almost any Unity Game Object and its associated properties, allowing for dynamic cutscenes, and in-game sequencing, all without the need for scripting or programming. Contains many more tools and options than Unity's timeline.” *Cinema Suit INC*  
+
+### UNREAL ENGINE 4:  
+
+[Matinee](https://docs.unrealengine.com/en-us/Engine/Matinee) is an animation tool that allows to animate and create in-game cutscenes as well as dynamic gameplay. The system is based on the use of specialized animation tracks in which you can place keyframes to set the values of certain properties of the Actors in the level.
+
+### ADOBE AFTER EFFECTS: 
+
+[Adobe After Effects](https://www.adobe.com/es/products/aftereffects.html) tool is more for post-production cutscenes but it can also be used for composing scenes and animating. 
+
+### RPG MAKER: 
+
+[RPG Maker](http://www.rpgmakerweb.com/) has a huge range of tools to make cutscenes. It allows to make the scenery, adding characters and adding actions to the characters. This is very easy to do, but the possibilities are limited. 
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/JoanBarduena/CutSceneManager/master/docs/CutsceneEditors.png">
+</p>
+
+###### From top to bottom and left to right: AdobeAfterEffects, Matinee(UE4), RPG Maker and Cinema Director(Unity). 
+
 ## Webgraphy 
 
-- The art of Cutscenes: [http://www.inmotiongaming.com/the-art-of-cutscenes/](http://www.inmotiongaming.com/the-art-of-cutscenes/)
-- "Cut-scenes". Klevjer, Rune(2014): [https://runeklevjer.files.wordpress.com/2013/01/klevjer_cutscene_johns-hopkins-guide-digital-media-post-print.pdf](https://runeklevjer.files.wordpress.com/2013/01/klevjer_cutscene_johns-hopkins-guide-digital-media-post-print.pdf)
-- Video Game Cutscenes: A Mixed Bag Of Interactivity And Cinematics: [https://gamerant.com/video-game-cutscenes-good-bad-411/](https://gamerant.com/video-game-cutscenes-good-bad-411/)
+- The art of Cutscenes: http://www.inmotiongaming.com/the-art-of-cutscenes/
+- "Cut-scenes". Klevjer, Rune(2014): https://runeklevjer.files.wordpress.com/2013/01/klevjer_cutscene_johns-hopkins-guide-digital-media-post-print.pdf
+- Video Game Cutscenes: A Mixed Bag Of Interactivity And Cinematics: https://gamerant.com/video-game-cutscenes-good-bad-411/
+- How are cinematics made?: https://gamedev.stackexchange.com/questions/4642/how-are-game-cinematics-made
+
 
 ## Videography 
 - A complete history of cutscenes in games: [https://www.youtube.com/watch?v=tZKxQ5-DtVA](https://www.youtube.com/watch?v=tZKxQ5-DtVA)
