@@ -56,6 +56,7 @@ bool j1Player::PostUpdate()
 bool j1Player::CleanUp()
 {
 	App->tex->UnLoad(graphics);
+	App->tex->UnLoad(graphics2); 
 
 	return true;
 }

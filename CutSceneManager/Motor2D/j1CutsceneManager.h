@@ -7,16 +7,15 @@
 #include <list>
 using namespace std; 
 
-#define MAX_ACTIONS 15
-
 class Action 
 {
 public:
-	int		id = 0;			//Action id enum.
+
+	int		actor = 0;		//Actor playing the action. 
 	int		x = 0;			//Position X the actor needs to reach.
 	int		y = 0;			//Position Y the actor needs to reach. 
 	int		speed = 0;		//Actor speed. 
-	int		time = 0;	//Time the action takes.
+	int		time = 0;		//Time the action will start.
 };
 
 class j1Cutscene :public j1Module
@@ -47,14 +46,12 @@ public:
 
 public:
 
-	void LoadData(pugi::xml_node& data, uint id); //Function that loads data from the XML. 
-	void Destination(int x, int y, uint speed); //Destination of the actor. 
-	void CheckDestination(int x, int y, uint speed); //Check if the actor has reached the destination. 
-	void CheckTime(int time); //Check if the given time has arrived.
-	void DoAction(Action actions); // Adds action to the list
+	void LoadData(pugi::xml_node& data, uint id);									//Function that loads data from the XML. 
+	void Destination(int x, int y, uint speed, iPoint &actor_pos, Action &actor);	//Destination of the actor. 
+	void DoAction(list<Action> &actions, Action &actor);							//Adds action to the list
 
-	Action actions[MAX_ACTIONS]; 
-	int actions_1_iterator = 0;
+	list <Action> actions_1;
+	list <Action> actions_2;
 
 	Action iterator;
 	Action actor_1;
@@ -63,12 +60,10 @@ public:
 	pugi::xml_document cutscenes_xml;
 
 	bool all_loaded = false; 
-	bool reached_dest = true; 
-	bool action_done = true;
 	
 	//Timer
 	j1Timer	act_time; 
-	bool time_elapsed = true;
+	int count_time = 0; 
 };
 
 #endif // __j1Cutscene_H__
