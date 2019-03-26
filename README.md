@@ -1,4 +1,7 @@
-I'm Joan Barduena Reyes, student of the degree in Videogames Design and Development, currently in second year. In case you want to see my other projects, here I leave my [Github](https://github.com/JoanBarduena). 
+I am [Joan Barduena](https://es.linkedin.com/in/joan-barduena-979999131), student of the
+[Bachelor’s Degree in Video Games by UPC at CITM](https://www.citm.upc.edu/ing/estudis/graus-videojocs/). This content is generated for the second year’s subject Project 2, under supervision of lecturer [Ricard Pillosu](https://es.linkedin.com/in/ricardpillosu).
+
+Here I leave my [Github](https://github.com/JoanBarduena) if you want to see my other projects. 
 
 # What is a CutScene?
 
@@ -24,22 +27,14 @@ The cutscenes on C&C are very profesional and they are a reference.
 
 ###### Command and Conquer: Red Alert 3 
 
-Dragon's Lair is known for being a interactive live-action cutscene transformed into a video game. The player interacts with the cutscene to play the game. 
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/JoanBarduena/CutSceneManager/master/docs/dragons%20lair.jpg">
-</p>
-
-###### Dragon's Lair
-
 ## 2. Animated
 
 Pre-rendered scenes or rendered in-game. 
 
 ### 2.1. Real-Time cutscene
 
-Real-time cutscenes are the ones being rendered for the game engine while playing. Video games like Assassin’s Creed have really good real-time cutscenes, which let the player see what is happening at that moment in the game while watching the scene.  
-
+Real-time cutscenes are the ones being rendered for the game engine while playing. Video games like Assassin’s Creed have really good real-time cutscenes, which let the player see what is happening at that moment in the game while watching the scene. If something changes in the game, like the outfit of Bayek, in the cutscene the outfit is the one wear in-game. 
+  
 <p align="center">
   <img src="https://raw.githubusercontent.com/JoanBarduena/CutSceneManager/master/docs/assassinscreed.jpg">
 </p>
@@ -65,7 +60,29 @@ One clear example of pre-rendered cutscenes is Halo 5. The first thing the playe
   <img src="https://raw.githubusercontent.com/JoanBarduena/CutSceneManager/master/docs/halo5.jpg" width="1500">
 </p>
 
+Dragon's Lair is known for being a interactive pre-rendered cutscene transformed into a video game. The player interacts with the cutscene to play the game.  
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/JoanBarduena/CutSceneManager/master/docs/dragons%20lair.jpg">
+</p>
+
+###### Dragon's Lair
+
 ###### Halo 5: Guardians
+
+## Pros & Cons 
+
+Pre-rendered cutscenes have a few advantages. They can show advanced and complex animations as well as constant framerate. They can also be more detailed than in-game, but this can cause a high expectation on the in-game graphics, which can lead to a bad experience if the gap is big. 
+Their disadvantages are they are fixed. In-game changes like clothes or weapon customization, that can be changed in-game, appear the same on the cutscene. They are also enormous in filesize as they have to be 720p or 1080p in order to have a good quality. 
+ 
+Instead, real-time cutscenes apply their changes in-game to the cutscene and since the quality of both is the same it is less perplexing. 
+Real-time also have disadvantages. Their quality can be as good as pre-rendered videos. They also won’t be able to show physics simulation stuff, unless the game engine already supports it. Furthermore, they are more susceptible of bugs, like audio-video desync, actors teleporting, stuff in the scene that should not be there, etc. 
+ 
+On the other hand, live-action cutscenes are the ones that have more similarity with the real-life as they are recorded with a camera. The problems are the difference between the game and the cutscene is too big and usually the actors are unprofessional, with a poor dialogue and low-cost scenarios. 
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/JoanBarduena/CutSceneManager/master/docs/proscons.png">
+</p>
 
 ## Cutscene Editors
 
@@ -99,10 +116,12 @@ Programs like 3DS Max, Maya, Blender, zBrush allow us to make the 3D models. Onc
 
 ## Webgraphy 
 
-- The art of Cutscenes: http://www.inmotiongaming.com/the-art-of-cutscenes/
-- "Cut-scenes". Klevjer, Rune(2014): https://runeklevjer.files.wordpress.com/2013/01/klevjer_cutscene_johns-hopkins-guide-digital-media-post-print.pdf
-- Video Game Cutscenes: A Mixed Bag Of Interactivity And Cinematics: https://gamerant.com/video-game-cutscenes-good-bad-411/
-- How are cinematics made?: https://gamedev.stackexchange.com/questions/4642/how-are-game-cinematics-made
+- The art of Cutscenes: [http://www.inmotiongaming.com/the-art-of-cutscenes/](http://www.inmotiongaming.com/the-art-of-cutscenes/)
+- "Cut-scenes". Klevjer, Rune(2014): [https://runeklevjer.files.wordpress.com/2013/01/klevjer_cutscene_johns-hopkins-guide-digital-media-post-print.pdf](https://runeklevjer.files.wordpress.com/2013/01/klevjer_cutscene_johns-hopkins-guide-digital-media-post-print.pdf)
+- Video Game Cutscenes: A Mixed Bag Of Interactivity And Cinematics: [https://gamerant.com/video-game-cutscenes-good-bad-411/](https://gamerant.com/video-game-cutscenes-good-bad-411/)
+- How are cinematics made?: [https://gamedev.stackexchange.com/questions/4642/how-are-game-cinematics-made](https://gamedev.stackexchange.com/questions/4642/how-are-game-cinematics-made)
+- Pre-rendered vs In-engine cutscenes: [https://www.reddit.com/r/truegaming/comments/1zksx4/prerendered_vs_inengine_cutscenes/
+(https://www.reddit.com/r/truegaming/comments/1zksx4/prerendered_vs_inengine_cutscenes/)
 
 
 ## Videography 
