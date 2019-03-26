@@ -7,15 +7,15 @@
 #include <list>
 using namespace std; 
 
-class Action 
+struct Action 
 {
 public:
 
 	int		actor = 0;		//Actor playing the action. 
 	int		x = 0;			//Position X the actor needs to reach.
 	int		y = 0;			//Position Y the actor needs to reach. 
-	int		speed = 0;		//Actor speed. 
-	int		time = 0;		//Time the action will start.
+	uint	speed = 0;		//Actor speed. 
+	uint	time = 0;		//Time the action will start.
 };
 
 class j1Cutscene :public j1Module

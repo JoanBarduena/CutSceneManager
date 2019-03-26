@@ -71,6 +71,9 @@ bool j1Cutscene::PostUpdate()
 
 bool j1Cutscene::CleanUp()
 {
+	actions_1.clear(); 
+	actions_2.clear(); 
+
 	return true;
 }
 
@@ -87,8 +90,8 @@ void j1Cutscene::LoadData(pugi::xml_node& data, uint id) // Loads the cutscene s
 			{
 					iterator.x = xml_actions.attribute("pos_x").as_int();
 					iterator.y = xml_actions.attribute("pos_y").as_int();
-					iterator.speed = xml_actions.attribute("speed").as_int();
-					iterator.time = xml_actions.attribute("time").as_int();
+					iterator.speed = xml_actions.attribute("speed").as_uint();
+					iterator.time = xml_actions.attribute("time").as_uint();
 					iterator.actor = xml_actions.attribute("actor").as_int(); 
 
 					//One list for each actor.
