@@ -59,6 +59,7 @@ One clear example of pre-rendered cutscenes is Halo 5. The first thing the playe
 <p align="center">
   <img src="https://raw.githubusercontent.com/JoanBarduena/CutSceneManager/master/docs/halo5.jpg" width="1500">
 </p>
+###### Halo 5: Guardians
 
 Dragon's Lair is known for being a interactive pre-rendered cutscene transformed into a video game. The player interacts with the cutscene to play the game.  
 
@@ -67,8 +68,6 @@ Dragon's Lair is known for being a interactive pre-rendered cutscene transformed
 </p>
 
 ###### Dragon's Lair
-
-###### Halo 5: Guardians
 
 ## Pros & Cons 
 
@@ -113,6 +112,76 @@ Programs like 3DS Max, Maya, Blender, zBrush allow us to make the 3D models. Onc
 </p>
 
 ###### From top to bottom and left to right: AdobeAfterEffects, Matinee(UE4), RPG Maker and Cinema Director(Unity). 
+
+# CODE
+
+I have created a base code in C++ with STD library. This code has a serie of actors stored on a class. Each actor has a position X and Y where they have to go (destination coordinates), speed they move and time the action will start since the cutscene has started. There is also an actor attribute so the movement is set to the actor selected.
+
+```c++
+struct Action 
+{
+public:
+
+	int		actor = 0;		//Actor playing the action. 
+	int		x = 0;			//Position X the actor needs to reach.
+	int		y = 0;			//Position Y the actor needs to reach. 
+	uint	speed = 0;		//Actor speed. 
+	uint	time = 0;		//Time the action will start.
+};
+```
+
+The user will only have to touch the XML file to move the actors. 
+
+### Steps to make a new actor. 
+
+The base code has only two actors. If the user wants to add more actors, he should follow this steps: 
+
+#### 1. 
+Go to j1Player.cpp and j1Player.h and add a new iPoint position as well a texture(do not forget to initialize it as NULLPTR). 
+The coordinates will be the initial actor position. 
+Also, blit the texture and coordinates and UnLoad() the texture on the CleanUp(). 
+
+```c++
+position.x = -10;
+position.y = 600;
+________________
+SDL_Texture * graphics = nullptr;
+App->render->Blit(graphics, position.x, position.y);
+App->tex->UnLoad(graphics);
+```
+#### 2. 
+Go to j1Cutscene.h and create a new list of actions and a action. 
+
+```c++
+list <Action> actions_1;
+Action actor_1;
+```
+
+#### 3. 
+Now on j1Cutscene.cpp, on the function LoadData(), inside the loop, if the iterator is equal to the number of the actor passed, add the iterator values to the list made on the step 2. 
+
+```c++
+//One list for each actor.
+if(iterator.actor == 1)
+  actions_1.push_back(iterator);
+if(iterator.actor == 2)
+	actions_2.push_back(iterator);
+```
+
+#### 4. 
+Continuing in the j1Cutscene.cpp, now on the function Update(), inside the "if(all_loaded)"
+Add a DoAction() with the list of actions and action made on step 2
+Add a Destination() with the action X, Y and speed made on step 2 and a pointer to player position made on step 1 and finally the action.
+
+```c++
+if (all_loaded)	//Attributes loaded of the cutscene pressed.
+{
+	DoAction(actions_1, actor_1);	
+	DoAction(actions_2, actor_2);
+	Destination(actor_1.x, actor_1.y, actor_1.speed, App->player->position, actor_1);
+	Destination(actor_2.x, actor_2.y, actor_2.speed, App->player->position2, actor_2);
+}
+```
 
 ## Webgraphy 
 
