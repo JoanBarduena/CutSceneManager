@@ -3,6 +3,35 @@ I am [Joan Barduena](https://es.linkedin.com/in/joan-barduena-979999131), studen
 
 Here I leave my [Github](https://github.com/JoanBarduena) if you want to see my other projects. 
 
+## Index 
+
+- [What is a Cutscene?](https://github.com/JoanBarduena/CutSceneManager#what-is-a-cutscene)
+- [Types of cutscenes](https://github.com/JoanBarduena/CutSceneManager#types-of-cutscenes)
+   - [Live-action](https://github.com/JoanBarduena/CutSceneManager#1-live-action)
+   - [Animated](https://github.com/JoanBarduena/CutSceneManager#2-animated)
+      - [Real-Time](https://github.com/JoanBarduena/CutSceneManager#21-real-time-cutscene)
+      - [Pre-rendered](https://github.com/JoanBarduena/CutSceneManager#22-pre-rendered-cutscene)
+- [Pros & Cons](https://github.com/JoanBarduena/CutSceneManager#pros--cons)
+- [Cutscene Editors](https://github.com/JoanBarduena/CutSceneManager#cutscene-editors)
+   - [Unity](https://github.com/JoanBarduena/CutSceneManager#unity)
+   - [Unreal Engine 4](https://github.com/JoanBarduena/CutSceneManager#unreal-engine-4)
+   - [Adobe After Effects](https://github.com/JoanBarduena/CutSceneManager#adobe-after-effects)
+   - [RPG Maker](https://github.com/JoanBarduena/CutSceneManager#rpg-maker)
+- [TODOs](https://github.com/JoanBarduena/CutSceneManager#todos)
+   - [TODO 1](https://github.com/JoanBarduena/CutSceneManager#todo-1)
+   - [TODO 2](https://github.com/JoanBarduena/CutSceneManager#todo-2)
+   - [TODO 3](https://github.com/JoanBarduena/CutSceneManager#todo-3)
+   - [TODO 4](https://github.com/JoanBarduena/CutSceneManager#todo-4)
+   - [TODO 5](https://github.com/JoanBarduena/CutSceneManager#todo-5)
+- [CODE](https://github.com/JoanBarduena/CutSceneManager#code)
+   - [XML File](https://github.com/JoanBarduena/CutSceneManager#xml-file)
+   - [Read XML](https://github.com/JoanBarduena/CutSceneManager#how-to-read-the-xml)
+   - [DoAction()](https://github.com/JoanBarduena/CutSceneManager#doaction)
+   - [NewActor](https://github.com/JoanBarduena/CutSceneManager#steps-to-make-a-new-actor)
+- [Improvements](https://github.com/JoanBarduena/CutSceneManager#possible-improvements-on-the-system)
+- [Webgraphy](https://github.com/JoanBarduena/CutSceneManager#webgraphy)
+   - [Videography](https://github.com/JoanBarduena/CutSceneManager#videography)
+	 
 # What is a CutScene?
 
 A cutscene is a non-playable or live-action animation, usually employed as a storytelling device. Cutscenes have not or have very limited gameplay, like dialogues or comic book panes. 
@@ -59,6 +88,7 @@ One clear example of pre-rendered cutscenes is Halo 5. The first thing the playe
 <p align="center">
   <img src="https://raw.githubusercontent.com/JoanBarduena/CutSceneManager/master/docs/halo5.jpg" width="1500">
 </p>
+
 ###### Halo 5: Guardians
 
 Dragon's Lair is known for being a interactive pre-rendered cutscene transformed into a video game. The player interacts with the cutscene to play the game.  
@@ -69,7 +99,7 @@ Dragon's Lair is known for being a interactive pre-rendered cutscene transformed
 
 ###### Dragon's Lair
 
-## Pros & Cons 
+# Pros & Cons 
 
 Pre-rendered cutscenes have a few advantages. They can show advanced and complex animations as well as constant framerate. They can also be more detailed than in-game, but this can cause a high expectation on the in-game graphics, which can lead to a bad experience if the gap is big. 
 Their disadvantages are they are fixed. In-game changes like clothes or weapon customization, that can be changed in-game, appear the same on the cutscene. They are also enormous in filesize as they have to be 720p or 1080p in order to have a good quality. 
@@ -83,7 +113,7 @@ On the other hand, live-action cutscenes are the ones that have more similarity 
   <img src="https://raw.githubusercontent.com/JoanBarduena/CutSceneManager/master/docs/proscons.png">
 </p>
 
-## Cutscene Editors
+# Cutscene Editors
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/JoanBarduena/CutSceneManager/master/docs/ModelingPrograms.png">
@@ -91,19 +121,19 @@ On the other hand, live-action cutscenes are the ones that have more similarity 
 
 Programs like 3DS Max, Maya, Blender, zBrush allow us to make the 3D models. Once this models are made, with these tools, cutscenes can be made.
 
-### UNITY: 
+## Unity: 
 
 “[Cinema Director](https://assetstore.unity.com/packages/tools/visual-scripting/cinema-director-timeline-cutscene-editor-19779) is a modular Timeline Editor and sequencer for Unity. It enables Game Developers, Film Professionals and Machinima gurus to control, sequence and manipulate almost any Unity Game Object and its associated properties, allowing for dynamic cutscenes, and in-game sequencing, all without the need for scripting or programming. Contains many more tools and options than Unity's timeline.” *Cinema Suit INC*  
 
-### UNREAL ENGINE 4:  
+## Unreal Engine 4:  
 
 [Matinee](https://docs.unrealengine.com/en-us/Engine/Matinee) is an animation tool that allows to animate and create in-game cutscenes as well as dynamic gameplay. The system is based on the use of specialized animation tracks in which you can place keyframes to set the values of certain properties of the Actors in the level.
 
-### ADOBE AFTER EFFECTS: 
+## Adobe After Effects: 
 
 [Adobe After Effects](https://www.adobe.com/es/products/aftereffects.html) tool is more for post-production cutscenes but it can also be used for composing scenes and animating. 
 
-### RPG MAKER: 
+## RPG Maker: 
 
 [RPG Maker](http://www.rpgmakerweb.com/) has a huge range of tools to make cutscenes. It allows to make the scenery, adding characters and adding actions to the characters. This is very easy to do, but the possibilities are limited. 
 
@@ -309,7 +339,7 @@ if (all_loaded)	//Attributes loaded of the cutscene pressed.
 }
 ```
 
-## Possible improvements on the system
+# Possible improvements on the system
 
 - Creation of an actor if the actor does not exist. 
 - Actions could not only start on integer seconds.
@@ -317,7 +347,7 @@ if (all_loaded)	//Attributes loaded of the cutscene pressed.
 - Create a big list instead of one for every actor with an ID. 
 - If function Destination() stays between one coordinate smaller and one bigger it buggs. 
 
-## Webgraphy 
+# Webgraphy 
 
 - The art of Cutscenes: [http://www.inmotiongaming.com/the-art-of-cutscenes/](http://www.inmotiongaming.com/the-art-of-cutscenes/)
 - "Cut-scenes". Klevjer, Rune(2014): [https://runeklevjer.files.wordpress.com/2013/01/klevjer_cutscene_johns-hopkins-guide-digital-media-post-print.pdf](https://runeklevjer.files.wordpress.com/2013/01/klevjer_cutscene_johns-hopkins-guide-digital-media-post-print.pdf)
@@ -325,6 +355,6 @@ if (all_loaded)	//Attributes loaded of the cutscene pressed.
 - How are cinematics made?: [https://gamedev.stackexchange.com/questions/4642/how-are-game-cinematics-made](https://gamedev.stackexchange.com/questions/4642/how-are-game-cinematics-made)
 - Pre-rendered vs In-engine cutscenes: [https://www.reddit.com/r/truegaming/comments/1zksx4/prerendered_vs_inengine_cutscenes/](https://www.reddit.com/r/truegaming/comments/1zksx4/prerendered_vs_inengine_cutscenes/)
 
-
 ## Videography 
+
 - A complete history of cutscenes in games: [https://www.youtube.com/watch?v=tZKxQ5-DtVA](https://www.youtube.com/watch?v=tZKxQ5-DtVA)
