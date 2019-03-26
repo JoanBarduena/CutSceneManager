@@ -113,7 +113,63 @@ Programs like 3DS Max, Maya, Blender, zBrush allow us to make the 3D models. Onc
 
 ###### From top to bottom and left to right: AdobeAfterEffects, Matinee(UE4), RPG Maker and Cinema Director(Unity). 
 
+# TODOs
+
+Now it's your time to see if you understood the code. To do this, I have implemented 5 simple TODOs. 
+
+## TODO 1:
+
+Use the "Action iterator" on j1CutsceneManager.h to pass values from the XML.
+First you have to uncomment the iterator on the j1CutsceneManager.h. 
+
+<details> 
+  <summary>Solution (click to open)</summary>
+  <p> 
+<img src="https://i.imgur.com/mRAjays.png">
+</p>
+</details>
+
+## TODO 2: 
+
+Complete the if() comparing if the first element on the list of actions is the same as the count_time (on the update()).
+
+<details> 
+  <summary>Solution (click to open)</summary>
+  <p> 
+<img src="https://i.imgur.com/8OvTxkD.png">
+</p>
+</details>
+
+## TODO 3: 
+
+Use the parameters on Destination() to move the actor from the coordinates he is to the new ones (use speed value, no teleporting).
+
+<details> 
+  <summary>Solution (click to open)</summary>
+  <p> 
+<img src="https://i.imgur.com/9sO2XHs.png">
+</p>
+</details>
+
+## TODO 4: 
+
+Complete the attributes of the functions DoAction() and Destination() in order to see if the cutscene works. 
+
+<details> 
+  <summary>Solution (click to open)</summary>
+  <p> 
+<img src="https://i.imgur.com/8Foehdo.png">
+</p>
+</details>
+
+## TODO 5: 
+
+YOUR TURN! 
+It's your turn to make your own cutscene. You will only need to code on the XML document if you did it all correct. 
+
 # CODE
+
+## DO NOT WATCH THE CODE SECTION IF YOU HAVE NOT COMPLETED THE TODOs.
 
 I have created a base code in C++ with STD library. This code has a serie of actors stored on a class. Each actor has a position X and Y where they have to go (destination coordinates), speed they move and time the action will start since the cutscene has started. There is also an actor attribute so the movement is set to the actor selected.
 
@@ -250,6 +306,14 @@ if (all_loaded)	//Attributes loaded of the cutscene pressed.
 	Destination(actor_2.x, actor_2.y, actor_2.speed, App->player->position2, actor_2);
 }
 ```
+
+## Possible improvements on the system
+
+- Creation of an actor if the actor does not exist. 
+- Actions could not only start on integer seconds.
+- List of actions lists and a function that read so there are not repeated functions on the code for each actor. 
+- Create a big list instead of one for every actor with an ID. 
+- If function Destination() stays between one coordinate smaller and one bigger it buggs. 
 
 ## Webgraphy 
 
