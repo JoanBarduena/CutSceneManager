@@ -117,14 +117,14 @@ Programs like 3DS Max, Maya, Blender, zBrush allow us to make the 3D models. Onc
 
 I have created a base code in C++ with STD library. This code has a serie of actors stored on a class. Each actor has a position X and Y where they have to go (destination coordinates), speed they move and time the action will start since the cutscene has started. There is also an actor attribute so the movement is set to the actor selected.
 
-```c++
+```javascript
 struct Action 
 {
 public:
 
-	int		actor = 0;		//Actor playing the action. 
-	int		x = 0;			//Position X the actor needs to reach.
-	int		y = 0;			//Position Y the actor needs to reach. 
+	int	actor = 0;		//Actor playing the action. 
+	int	x = 0;			//Position X the actor needs to reach.
+	int	y = 0;			//Position Y the actor needs to reach. 
 	uint	speed = 0;		//Actor speed. 
 	uint	time = 0;		//Time the action will start.
 };
@@ -141,7 +141,7 @@ Go to j1Player.cpp and j1Player.h and add a new iPoint position as well a textur
 The coordinates will be the initial actor position. 
 Also, blit the texture and coordinates and UnLoad() the texture on the CleanUp(). 
 
-```c++
+```javascript
 position.x = -10;
 position.y = 600;
 ________________
@@ -152,7 +152,7 @@ App->tex->UnLoad(graphics);
 #### 2. 
 Go to j1Cutscene.h and create a new list of actions and a action. 
 
-```c++
+```javascript
 list <Action> actions_1;
 Action actor_1;
 ```
@@ -160,7 +160,7 @@ Action actor_1;
 #### 3. 
 Now on j1Cutscene.cpp, on the function LoadData(), inside the loop, if the iterator is equal to the number of the actor passed, add the iterator values to the list made on the step 2. 
 
-```c++
+```javascript
 //One list for each actor.
 if(iterator.actor == 1)
   actions_1.push_back(iterator);
@@ -173,7 +173,7 @@ Continuing in the j1Cutscene.cpp, now on the function Update(), inside the "if(a
 Add a DoAction() with the list of actions and action made on step 2
 Add a Destination() with the action X, Y and speed made on step 2 and a pointer to player position made on step 1 and finally the action.
 
-```c++
+```javascript
 if (all_loaded)	//Attributes loaded of the cutscene pressed.
 {
 	DoAction(actions_1, actor_1);	
