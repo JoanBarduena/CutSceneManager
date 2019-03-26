@@ -117,6 +117,8 @@ Programs like 3DS Max, Maya, Blender, zBrush allow us to make the 3D models. Onc
 
 Now it's your time to see if you understood the code. To do this, I have implemented 5 simple TODOs. 
 
+[CLICK HERE](https://github.com/JoanBarduena/CutSceneManager/releases) TO DOWNLOAD THE ZIP FILE AND DESCOMPRESS IT. The folder /exercises is for doing the TODOs and the folder /fullcode is the solution. 
+
 ## TODO 1:
 
 Use the "Action iterator" on j1CutsceneManager.h to pass values from the XML.
@@ -169,7 +171,7 @@ It's your turn to make your own cutscene. You will only need to code on the XML 
 
 # CODE
 
-## DO NOT WATCH THE CODE SECTION IF YOU HAVE NOT COMPLETED THE TODOs.
+## DO NOT WATCH THE CODE SECTION IF YOU HAVE NOT COMPLETED THE TODOs!!!
 
 I have created a base code in C++ with STD library. This code has a serie of actors stored on a class. Each actor has a position X and Y where they have to go (destination coordinates), speed they move and time the action will start since the cutscene has started. There is also an actor attribute so the movement is set to the actor selected.
 
