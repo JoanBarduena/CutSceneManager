@@ -1,11 +1,9 @@
 #include "j1CutsceneManager.h"
 #include "j1App.h"
-#include "j1Textures.h"
 #include "j1Render.h"
 #include "j1Input.h"
 #include "p2Log.h"
 #include "j1Player.h"
-#include <iostream>
 using namespace std; 
 
 j1Cutscene::j1Cutscene() : j1Module()
@@ -122,10 +120,8 @@ void j1Cutscene::DoAction(list<Action> &actions, Action &actor)
 { 
 	if (!actions.empty()) // List of actions. 
 	{
-		LOG("%d", actor.time);
-
-		if (actions.front().time == count_time) // Do not start an action before the previous had finished (works individually on each actor).
-		{
+		if (actions.front().time == count_time) //Do not start an action before the previous had finished 
+		{										//(works individually on each actor).
 			actor.x = actions.front().x;
 			actor.y = actions.front().y;
 			actor.speed = actions.front().speed;

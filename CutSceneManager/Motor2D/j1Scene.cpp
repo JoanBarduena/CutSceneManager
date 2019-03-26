@@ -46,13 +46,6 @@ bool j1Scene::Start()
 
 	debug_tex = App->tex->Load("maps/path2.png");
 
-	//HUD = App->gui->Create_Image(Element_type::IMAGE, { 350, 655 }, { 0, 0, 278, 112 }, true, false, false, App->gui->GetAtlas(), nullptr);
-	//Health = App->gui->Create_Label(Element_type::LABEL, { 415, 670 }, true, false, "0%%", { 0,255, 0,0 }, App->font->smaller);
-	//Strength = App->gui->Create_Label(Element_type::LABEL, { 555, 670 }, true, false, "0%%", { 255,0, 0,0 }, App->font->smaller);
-	//Armor = App->gui->Create_Label(Element_type::LABEL, { 425, 710 }, true, false, "0%%", { 200,0, 0,0 }, App->font->smaller);
-	//Speed = App->gui->Create_Label(Element_type::LABEL, { 565, 710 }, true, false, "0%%", { 200,0, 0,0 }, App->font->smaller);
-
-
 	return true;
 }
 
@@ -65,23 +58,6 @@ bool j1Scene::PreUpdate()
 // Called each loop iteration
 bool j1Scene::Update(float dt)
 {
-	//Health->ValuetoString(App->player->health, Health->text);
-	//Strength->ValuetoString(App->player->strength, Strength->text);
-	//Armor->ValuetoString(App->player->armor, Armor->text);
-	//Speed->ValuetoString(App->player->speed, Speed->text);
-
-	
-	if(App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT)
-		App->render->camera.y += ceil(150.0*dt);
-
-	if(App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
-		App->render->camera.y -= ceil(150.0*dt);
-
-	if(App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
-		App->render->camera.x += ceil(150.0*dt);
-
-	if(App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
-		App->render->camera.x -= ceil(150.0*dt);
 
 	App->map->Draw(); 
 
